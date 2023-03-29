@@ -16,24 +16,28 @@ public class aluguel {
         frame.setLayout(new BorderLayout());
 
         JPanel form = new JPanel();
-        form.setLayout(new GridLayout(2, 11, 10, 8));
+        form.setLayout(new GridLayout(11, 2, 6,5));
         for(int i = 0; i < lblFields.length; i++){
-            System.out.println(i + "\n" + lblFields.length);
+//            System.out.println(i + "\n" + lblFields.length);
 
             int posX = i*10;
-            lbls[i].setText(lblFields[i]);
-            lbls[i].setBounds(posX,0,120,40);
+            lbls[i] = new Label(lblFields[i]);
+            lbls[i].setBounds(posX,0,60,20);
             form.add(lbls[i]);
-            inputBoxes[i].setBounds(posX,160,120,40);
+            inputBoxes[i] = new JTextField();
+            inputBoxes[i].setBounds(posX,160,60,20);
+            if (i == 0 || i == 4){
+                inputBoxes[i].setVisible(false);
+            }
             form.add(inputBoxes[i]);
         }
-
         frame.add(form, BorderLayout.CENTER);
 
         button = new JButton("Salvar");
-        frame.add(button, BorderLayout.CENTER);
+        frame.add(button, BorderLayout.PAGE_END);
+        button.setBounds(100, 60, 40,40);
 
-        frame.pack();
+        frame.setSize(250,300);
         frame.setVisible(true);
     }
 
